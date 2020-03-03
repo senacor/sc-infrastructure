@@ -1,0 +1,2 @@
+# sc-infrastructure
+Infrastructure configuration
