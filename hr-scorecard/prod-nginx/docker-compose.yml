@@ -1,0 +1,19 @@
+version: '3.6'
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ${NGINX_DEFAULT_CONF:-./nginx/default.conf}:/etc/nginx/conf.d/default.conf
+      - ./logs/nginx:/var/log/nginx
+      - ./certs/:/etc/nginx/ssl/ # uncomment for SSL certificates
+    restart: always
+    networks:
+      - internal_network
+
+networks:
+  internal_network:
+    name: internal_network
